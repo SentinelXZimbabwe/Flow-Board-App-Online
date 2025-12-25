@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowBoard</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<header class="app-header">
+  <h1>📋 FlowBoard</h1>
+
+  <div class="actions">
+    <button id="openTaskModal">➕ Task</button>
+    <button id="openColumnModal">🗂️ Column</button>
+
+    <select id="exportFormat">
+      <option value="json">JSON</option>
+      <option value="txt">TXT</option>
+      <option value="csv">CSV</option>
+      <option value="pdf">PDF</option>
+    </select>
+    <button id="exportBtn">📤 Export</button>
+
+    <label class="import-label">
+      📥 Import
+      <input type="file" id="importInput" accept=".json" hidden />
+    </label>
+  </div>
+</header>
+
+<main id="board"></main>
+
+<footer class="app-footer">
+  Offline · No backend · Local storage
+</footer>
+
+<!-- TASK MODAL -->
+<div class="modal hidden" id="taskModal">
+  <div class="modal-box">
+    <h2>Create Task</h2>
+
+    <input id="taskTitle" placeholder="Task title" />
+
+    <select id="taskColumn"></select>
+
+    <label>Color</label>
+    <div id="colorPicker" class="color-picker"></div>
+
+    <label>Start date</label>
+    <input type="date" id="taskStart" />
+
+    <label>Due date & time</label>
+    <input type="datetime-local" id="taskDue" />
+
+    <div class="modal-actions">
+      <button id="saveTask">Save</button>
+      <button id="closeTaskModal">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- COLUMN MODAL -->
+<div class="modal hidden" id="columnModal">
+  <div class="modal-box">
+    <h2>Column</h2>
+    <input id="columnName" placeholder="Column name" />
+    <div class="modal-actions">
+      <button id="saveColumn">Save</button>
+      <button id="closeColumnModal">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
